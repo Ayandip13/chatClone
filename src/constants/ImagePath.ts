@@ -1,3 +1,3 @@
 export default{
-    react_logo:require('@/src/assets/images/react-logo.png')
+    react_logo:require('@/src/assets/images/favicon.png')
 }
