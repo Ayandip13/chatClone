@@ -1,4 +1,11 @@
-import { View, Text, Button, StyleSheet, Image, ActivityIndicator } from "react-native";
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  Image,
+  ActivityIndicator,
+} from "react-native";
 import React from "react";
 import { Link, router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -8,16 +15,22 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const Auth = () => {
-  const [isLoading, setisLoading] = useState(false)
+  const [isLoading, setisLoading] = useState(false);
 
-  useEffect(()=>{
-    setTimeout(() => {
-      setisLoading(true)
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setisLoading(true);
       setTimeout(() => {
-        router.push("/(auth)/terms_agree")
-      }, 3000);
-    }, 2000);
-  },[])
+        router.push("/(auth)/terms_agree");
+      }, 4000);
+    }, 3000);
+
+    return () => {                    //this return is used to run when component has unmount and move to new screen
+      clearTimeout(timeout)         //this clear function is used to clear the timeout function, so that it will not run on background
+    };
+
+
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -27,24 +40,32 @@ const Auth = () => {
           resizeMode="contain"
           style={styles.logo_style}
           source={ImagePath.react_logo}
-        />{" "}
+        />
         {/*resizeMode: 'contain' ensures an image scales properly within a defined frame. */}
         <Text style={styles.whatsapp_text}>Whatsapp</Text>
       </View>
 
       <View style={styles.footer}>
-        {
-          isLoading ? 
+        {isLoading ? (
           <>
-          <ActivityIndicator size={moderateScale(30)} color={"black"}/>
-          <Text style={{textAlign:"center", marginTop:7, fontWeight:"700", fontSize:16}}>Loading...</Text>
+            <ActivityIndicator size={moderateScale(30)} color={"black"} />
+            <Text
+              style={{
+                textAlign: "center",
+                marginTop: 7,
+                fontWeight: "700",
+                fontSize: 16,
+              }}
+            >
+              Loading...
+            </Text>
           </>
-          : <>
-          <Text style={styles.fromText}>From</Text>
-          <Text style={styles.facebookText}>Facebook</Text>
+        ) : (
+          <>
+            <Text style={styles.fromText}>From</Text>
+            <Text style={styles.facebookText}>Facebook</Text>
           </>
-        }
-        
+        )}
       </View>
     </SafeAreaView>
   );
@@ -70,16 +91,16 @@ const styles = StyleSheet.create({
   },
   whatsapp_text: {
     fontSize: moderateScale(25),
-    fontWeight:'bold',
+    fontWeight: "bold",
     color: "#000000",
   },
   body: {
-    alignItems:'center',
-    gap:verticalScale(7)
+    alignItems: "center",
+    gap: verticalScale(7),
   },
   footer: {
     alignItems: "center",
-    height:verticalScale(70)
+    height: verticalScale(70),
   },
   fromText: {
     fontSize: moderateScale(12), //moderateScale: Scales size proportionally based on screen dimensions with an optional factor for balanced responsiveness.
@@ -87,7 +108,7 @@ const styles = StyleSheet.create({
   },
   facebookText: {
     fontSize: moderateScale(15),
-    fontWeight:"600",
+    fontWeight: "600",
     color: "#000000",
   },
 });
