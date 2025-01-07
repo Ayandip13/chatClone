@@ -19,17 +19,15 @@ const Auth = () => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setisLoading(true);
+      setisLoading(true);             //This will execute after 3 second
       setTimeout(() => {
-        router.push("/(auth)/terms_agree");
+        router.push("/(auth)/terms_agree");   //4000 means ActivityIndicator will execute till 4 sec
       }, 4000);
     }, 3000);
 
-    return () => {                    //this return is used to run when component has unmount and move to new screen
-      clearTimeout(timeout)         //this clear function is used to clear the timeout function, so that it will not run on background
+    return () => {                //this return is used to run when component has unmount and move to new screen
+      clearTimeout(timeout)       //this clear function is used to clear the timeout function, so that it will not run on background
     };
-
-
   }, []);
 
   return (
