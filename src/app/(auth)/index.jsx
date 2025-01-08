@@ -46,7 +46,7 @@ const Auth = () => {
       <View style={styles.footer}>
         {isLoading ? (
           <>
-            <ActivityIndicator size={moderateScale(30)} color={"black"} />
+            <ActivityIndicator size={moderateScale(30)} color={"#697565"} />
             <Text
               style={{
                 textAlign: "center",

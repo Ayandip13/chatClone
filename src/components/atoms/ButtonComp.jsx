@@ -15,14 +15,14 @@ const ButtonComp = ({ onPress, title, style }) => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "#040036",
+    backgroundColor: "#697565",
     borderRadius: 5,
     paddingVertical: 15,
     paddingHorizontal: 45,
     marginTop: 10,
   },
   button_text: {
-    color: "#c8c4ff",
+    color: "#ECDFCC",
   },
 });
 

@@ -9,7 +9,7 @@ const TermsAgree = () => {
   const onAgree = () => {
     router.push("/(auth)/login")
   }
-
+ 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     paddingVertical: verticalScale(80),
   },
   link_text:{
-    color:"#0f02a3",
+    color:"#697565",
     fontWeight:"500"
   },
   description_text:{
